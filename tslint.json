@@ -1,0 +1,17 @@
+{
+    "extends": "tslint:recommended",
+    "rules": {
+      "quotemark": [
+        "single"
+      ],
+      "trailing-comma": [
+        true,
+        {
+          "esSpecCompliant": true
+        }
+      ],
+      "object-literal-sort-keys": false,
+      "max-line-length" : false,
+      "no-bitwise" :false
+    }
+  }
