@@ -20,10 +20,7 @@ export class TokenHelper {
             },
             json: true
         });
-        return {
-            value: data.access_token,
-            expireOn: new Date(parseInt(data.expires_on, 10))
-        };
+        return data;
     }
     public static async getUserAccessTokenWithAutorizationCode( code: string, url: string , redirectUri: string): Promise<any> {
         const sharepointhostname = urlparse(url).host;
@@ -43,10 +40,7 @@ export class TokenHelper {
             },
             json: true
         });
-        return {
-            value: data.access_token,
-            expireOn: new Date(parseInt(data.expires_on, 10))
-        };
+        return data;
     }
     private static async getAuthUrl(realm: string): Promise<string> {
         const url = Constants.acsRealmUrl + realm;

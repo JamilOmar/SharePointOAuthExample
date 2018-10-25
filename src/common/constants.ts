@@ -4,9 +4,9 @@ export class Constants {
     public static SPCode: string = 'code';
     public static SPAppToken: string = 'SPAppToken';
     public static SharePointPrincipal: string = '00000003-0000-0ff1-ce00-000000000000';
-    public static clientId: string = 'YOUR VALUES';
-    public static clientSecret: string = 'YOUR VALUES';
+    public static clientId: string = '';
+    public static clientSecret: string = '';
     public static redirectUrl: string = 'https://localhost:44355/redirect';
-    public static sharePointUrl: string = 'YOUR VALUES';
-    public static acsRealmUrl: string =  'https://accounts.accesscontrol.windows.net/metadata/json/1?realm=';
+    public static sharePointUrl: string = '';
+    public static acsRealmUrl: string = 'https://accounts.accesscontrol.windows.net/metadata/json/1?realm=';
 }

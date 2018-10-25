@@ -16,7 +16,8 @@ export class RedirectRoute {
     res.render('authenticate', {
         title: 'Authenticate',
         loginName: data.profile.loginName,
-        accessToken : data.accessToken
+        accessToken : data.authInfo.access_token,
+        refreshToken : data.authInfo.refresh_token
       });
   }
 }

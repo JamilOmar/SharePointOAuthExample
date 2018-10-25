@@ -14,7 +14,7 @@ export class Authenticate {
         const hostUrl = this.ensureTrailingSlash(Constants.sharePointUrl);
         const returnUrl = this.callbackUrl;
         const encodedReturnUrl = encodeURIComponent(returnUrl);
-        const postRedirectUrl: string = `${hostUrl}_layouts/15/OAuthAuthorize.aspx?client_id=${Constants.clientId}&scope=Site.Manage&response_type=code&redirect_uri=${encodedReturnUrl}`;
+        const postRedirectUrl: string = `${hostUrl}_layouts/15/OAuthAuthorize.aspx?client_id=${Constants.clientId}&scope=Web.Write&response_type=code&redirect_uri=${encodedReturnUrl}`;
         res.redirect(postRedirectUrl);
     }
 
@@ -24,11 +24,11 @@ export class Authenticate {
         if (!code) {
             throw new Error('Unable to find code');
         }
-        const accessToken = await TokenHelper.getUserAccessTokenWithAutorizationCode( code, hostUrl , Constants.redirectUrl );
+        const authInfo = await TokenHelper.getUserAccessTokenWithAutorizationCode( code, hostUrl , Constants.redirectUrl );
 
         const headers = {
             Accept: 'application/json;odata=verbose',
-            Authorization: 'Bearer ' + accessToken.value
+            Authorization: 'Bearer ' + authInfo.access_token
         };
         const data = await request.get(`${hostUrl}_api/web/currentuser`, {
             json: true,
@@ -41,7 +41,7 @@ export class Authenticate {
         };
 
         return {
-            accessToken,
+            authInfo,
             profile
         };
 
