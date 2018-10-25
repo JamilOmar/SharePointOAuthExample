@@ -5,7 +5,7 @@ export class IndexRoute {
   public router = Router();
 
   constructor() {
-    this.router.route('/authenticate')
+    this.router.route('/')
       .get(this.index);
   }
 

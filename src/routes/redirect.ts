@@ -11,10 +11,10 @@ export class RedirectRoute {
 
   public async index(req: Request, res: Response, next: NextFunction) {
 
-    const auth = new Authenticate(Constants.redirectUrl);
+    const auth = new Authenticate( Constants.redirectUrl);
     const data = await auth.onReturnCallback(req);
     res.render('authenticate', {
-        title: 'Authenticate',
+        title: 'Authenticated',
         loginName: data.profile.loginName,
         accessToken : data.authInfo.access_token,
         refreshToken : data.authInfo.refresh_token
